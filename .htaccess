@@ -1,0 +1,29 @@
+Options -Indexes
+DirectoryIndex index.php
+
+RewriteEngine On
+
+# Keep cPanel AutoSSL validation reachable.
+RewriteRule ^\.well-known/ - [L]
+
+# Block hidden files and folders except AutoSSL validation.
+RewriteRule (^|/)\.(?!well-known/) - [F,L,NC]
+
+# Public assets remain in one source directory.
+RewriteRule ^assets/(.+)$ public/assets/$1 [L]
+
+# Never expose application source, credentials, logs, migrations, or dependencies.
+RewriteRule ^(?:app|bin|bootstrap|config|database|routes|storage|vendor)(?:/|$) - [F,L,NC]
+RewriteRule ^public/(?:index\.php|\.htaccess)$ - [F,L,NC]
+
+<FilesMatch "^(?:composer\.(?:json|lock)|\.gitignore|\.env(?:\..*)?|phpunit\.xml|installed\.lock)$">
+    Require all denied
+</FilesMatch>
+
+<FilesMatch "\.(?:env|ini|log|sql|lock|md|sh|bat|ps1|phar)$">
+    Require all denied
+</FilesMatch>
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ index.php [QSA,L]

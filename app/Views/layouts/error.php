@@ -1,0 +1,1 @@
+<!doctype html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title><?= e($code) ?></title><link rel="stylesheet" href="<?= asset('app.css') ?>"></head><body><main class="error-page"><strong><?= e($code) ?></strong><h1><?= e($message) ?></h1><a class="button" href="<?= url('/') ?>">Kembali</a></main></body></html>

@@ -1,0 +1,12 @@
+/vendor/
+/config/database.local.php
+/storage/installed.lock
+/storage/logs/*.log
+/storage/uploads/products/*
+!/storage/uploads/products/.gitkeep
+/storage/uploads/branding/*
+!/storage/uploads/branding/.gitkeep
+/storage/uploads/homepage/*
+!/storage/uploads/homepage/.gitkeep
+/storage/uploads/footer/*
+!/storage/uploads/footer/.gitkeep

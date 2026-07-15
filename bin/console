@@ -1,0 +1,9 @@
+<?php
+
+declare(strict_types=1);
+define('BASE_PATH', dirname(__DIR__));
+require BASE_PATH.'/vendor/autoload.php';
+$command=$argv[1]??'help';
+if($command==='migrate:status') { $pdo=App\Core\Database::connection(); $rows=$pdo->query('SELECT migration,executed_at FROM migrations ORDER BY id')->fetchAll(); foreach($rows as $row) echo $row['migration']."\t".$row['executed_at'].PHP_EOL; exit; }
+if($command==='install:status') { echo is_file(BASE_PATH.'/storage/installed.lock')?'installed'.PHP_EOL:'not installed'.PHP_EOL; exit; }
+echo "Commands: migrate:status, install:status".PHP_EOL;
