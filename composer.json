@@ -2,6 +2,7 @@
   "name": "zenhosta/niagakita",
   "description": "Toko online PHP native serbaguna",
   "type": "project",
+  "license": "proprietary",
   "require": { "php": ">=8.2", "ext-pdo": "*", "ext-fileinfo": "*" },
   "autoload": { "psr-4": { "App\\": "app/" }, "files": ["app/helpers.php"] }
 }
